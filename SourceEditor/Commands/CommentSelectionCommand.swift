@@ -60,6 +60,7 @@ class CommentSelectionCommand: NSObject, XCSourceEditorCommandDefinition {
                 invocation.replaceLine(at: index, with: String(chars))
             }
         }
+        invocation.resetSelections()
     }
     
     func removeComment(invocation: XCSourceEditorCommandInvocation) {
@@ -75,5 +76,6 @@ class CommentSelectionCommand: NSObject, XCSourceEditorCommandDefinition {
                 invocation.replaceLine(at: index, with: line)
             }
         }
+        invocation.resetSelections()
     }
 }

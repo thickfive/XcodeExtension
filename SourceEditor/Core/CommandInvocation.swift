@@ -56,3 +56,20 @@ extension XCSourceEditorCommandInvocation {
         buffer.lines.removeLastObject()
     }
 }
+
+extension XCSourceEditorCommandInvocation {
+    
+    /// 重置选择范围, 避免光标出现在修改后的代码中间
+    /// 否则文字变了但是光标位置不变, 造成光标相对移动的错觉
+    /// 重置前: "abc|" => "// |abc", 重置后: "abc|" => "// abc|"
+    func resetSelections() {
+        if let first = buffer.selections.firstObject as? XCSourceTextRange,
+            let last = buffer.selections.lastObject as? XCSourceTextRange {
+            let newSelection = XCSourceTextRange(start: XCSourceTextPosition(line: first.start.line, column: 0),
+                                                 end: XCSourceTextPosition(line: last.end.line, column: Int.max))
+            buffer.selections.removeAllObjects()
+            buffer.selections.add(newSelection)
+        }
+    }
+}
+
