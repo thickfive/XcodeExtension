@@ -23,7 +23,7 @@ Xcode 更新之后, 根据上面的教程, 代码可以运行但是 Xcode Editor
 - Xcode Version 16.3 (16E140), macOS 15.4.1 (24E263)
 1. 新建项目 Project - `macOS` - `App`
 2. 在项目里面新建 Target - `Xcode Source Editor Extension`
-3. 主项目和 Extension 的 `Signing Certificate` 都选择 `Development`, 不能选 `Sing to Run Locally`
+3. 主项目和 Extension 的 `Signing Certificate` 都选择 `Development`, 不能选 `Sign to Run Locally`
 4. `XcodeKit.framework` 改为 `Embed & Sign`
 
 ### 调试
